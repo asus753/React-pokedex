@@ -4,8 +4,8 @@ import pokeAPI from '../pokeAPI.js'
 import { useFetch } from '../hooks/useSimpleFetch.js'
 
 
-export const ContainerCards = () => {
-  const {data , error, loading} = useFetch(pokeAPI.search,'pokemon')
+export const ContainerCards = ({page}) => {
+  const {data , error, loading} = useFetch(pokeAPI.search,page)
 
   
   return (

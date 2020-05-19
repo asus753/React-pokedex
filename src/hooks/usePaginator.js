@@ -1,10 +1,10 @@
 import { useState } from 'react'
 
-export const usePaginador = (totalRecords, pageLimit = 20, onPageChanged = () => {}, pageNeighbours = 2) => {
+export const usePaginador = (totalRecords, pageLimit = 20, onPageChanged = () => {}, page, pageNeighbours = 2) => {
   const totalPages = Math.ceil(totalRecords/pageLimit)
   const LEFT_PAGE = 'LEFT';
   const RIGHT_PAGE = 'RIGHT';
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(page)
 
   const fetchPageNumbers = () => {
     const totalNumbers = (pageNeighbours * 2) + 3
