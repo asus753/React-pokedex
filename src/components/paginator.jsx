@@ -1,6 +1,5 @@
 import React from 'react'
 import { Pagination } from 'react-bootstrap'
-import pokeAPI from '../pokeAPI.js'
 import { usePaginador } from '../hooks/usePaginator.js'
 
 export const Paginator = ({page, changePage}) => {
@@ -19,24 +18,27 @@ export const Paginator = ({page, changePage}) => {
     return null
   }else{
     return (
-      <Pagination style={{justifyContent : 'center', marginTop : '1rem'}}>
-        {pages.map((page,idx) => {
-          if(page === 'LEFT') return (
-            <Pagination.Ellipsis key={idx} onClick={(event) => {handleMoveLeft(event)}}/>
-          )
-          if(page === 'RIGHT') return (
-            <Pagination.Ellipsis key={idx} onClick={(event) => {handleMoveRight(event)}}/>
-          )
-          return (
-            <Pagination.Item 
-              key={idx}
-              className={page === currentPage && 'active'}
-              onClick={(event) => {handleClick(event)}}>
-            {page}
-            </Pagination.Item>
-          )
-        })}
-      </Pagination>
+      <div style={{justifyContent : 'center', marginTop : '1rem', textAlign : 'center'}}>
+        <h3>There are a total of {TOTAL_POKEMONS} pokemons</h3>
+        <Pagination style={{justifyContent : 'center'}}>
+          {pages.map((page,idx) => {
+            if(page === 'LEFT') return (
+              <Pagination.Ellipsis key={idx} onClick={(event) => {handleMoveLeft(event)}}/>
+            )
+            if(page === 'RIGHT') return (
+              <Pagination.Ellipsis key={idx} onClick={(event) => {handleMoveRight(event)}}/>
+            )
+            return (
+              <Pagination.Item 
+                key={idx}
+                className={page === currentPage && 'active'}
+                onClick={(event) => {handleClick(event)}}>
+              {page}
+              </Pagination.Item>
+            )
+          })}
+        </Pagination>  
+      </div>
     )
   }
 }
