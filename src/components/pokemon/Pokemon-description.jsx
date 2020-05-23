@@ -1,8 +1,8 @@
 import React from 'react'
-import { useFetchReducer } from '../hooks/useSimpleFetch.js'
-import pokeAPI from '../pokeAPI.js'
+import { useFetchReducer } from '../../hooks/useSimpleFetch.js'
+import pokeAPI from '../../pokeAPI.js'
 import { useParams } from 'react-router-dom'
-import {Loading} from './Loading.jsx'
+import {Loading} from '../general/Loading.jsx'
 
 export const PokemonDescription = () => {
   const { id } = useParams()

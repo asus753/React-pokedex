@@ -1,9 +1,9 @@
 import React from 'react'
-import { useParams, Link, BrowserRouter } from 'react-router-dom'
-import pokeAPI from '../pokeAPI.js'
-import { useFetchReducer } from '../hooks/useSimpleFetch.js'
+import { useParams, Link } from 'react-router-dom'
+import pokeAPI from '../../pokeAPI.js'
+import { useFetchReducer } from '../../hooks/useSimpleFetch.js'
 import { Alert, Accordion, Card, Table } from 'react-bootstrap'
-import { Loading } from './Loading.jsx'
+import { Loading } from '../general/Loading.jsx'
 import { PokemonDescription } from './Pokemon-description.jsx'
 
 export const Pokemon = () => {
@@ -20,9 +20,21 @@ export const Pokemon = () => {
     return (
       <div style={{textAlign : 'center', }}>
         <h1>{pokemon.name} ({pokemon.id})</h1>
-        {pokemon.pictureURL ? <img src={pokemon.pictureURL} alt={pokemon.name} height='500px' width='500px'></img> : <p><strong>This pokemon dont provide a image</strong></p>}
-        <PokemonDescription/>
-        <p>Height: <strong>{pokemon.height}</strong>, Weight: <strong>{pokemon.weight}</strong></p>
+        {/* {pokemon.pictureURL ? <img src={pokemon.pictureURL} alt={pokemon.name} height='500px' width='500px'></img> : <p><strong>This pokemon dont provide a image</strong></p>}
+        <PokemonDescription/> */}
+
+        <div style={{display : 'flex', alignItems : 'center', margin : '1rem'}}>
+          {pokemon.pictureURL ? <img src={pokemon.pictureURL} alt={pokemon.name} height='50%' width='50%'></img> : <p style={{width : '50%'}}><strong>This pokemon dont provide a image</strong></p>}
+          <Card border="info" style={{ width: '50%' }}>
+            <Card.Body>
+              <Card.Title>Description</Card.Title>
+              <Card.Text as='span'>
+                <PokemonDescription/>
+                <p>Height: <strong>{pokemon.height}</strong>, Weight: <strong>{pokemon.weight}</strong></p>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </div>
         <Accordion>
           <Card>
             <Accordion.Toggle as={Card.Header} eventKey='0'>Moves</Accordion.Toggle>

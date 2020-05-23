@@ -1,14 +1,15 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import {useFetchReducer} from '../hooks/useSimpleFetch.js'
-import pokeAPI from '../pokeAPI.js'
-import { Loading } from './Loading.jsx'
+import {useFetchReducer} from '../../hooks/useSimpleFetch.js'
+import pokeAPI from '../../pokeAPI.js'
+import { Loading } from '../general/Loading.jsx'
 import {Alert, Card} from 'react-bootstrap'
 
 export const Move = () => {
-  const { id } = useParams()
   
+  const { id } = useParams()
   const {data , error, loading} = useFetchReducer(pokeAPI.search,`move/${id}`)
+
   if(loading){
     return <Loading/>
   }if(error){
@@ -19,7 +20,9 @@ export const Move = () => {
     return (
       <div style={{textAlign : 'center', }}>
         <h1>{move.name} ({move.id})</h1>
-        <p>{move.description.flavor_text} <br></br><small>(version : {move.description.version_group.name})</small></p>{/* quitar ese short_effect*/}
+        {typeof move.description === 'object' ? (
+          <p>{move.description.flavor_text} <br></br><small>(version : {move.description.version_group.name})</small></p>
+        ) : (<p>{move.description}</p>)}
         <div style={{display : 'flex'}}>
           <Card style={{width : '30rem', marginRight : '1rem'}} border='info'>
             <Card.Body>
@@ -77,11 +80,16 @@ const getEffect = (effectEntries) => {
 const getDescription = (descriptionEntries) => {
   let DESCRIPTION
 
-  descriptionEntries.forEach(description => {
-    if(description.language.name === 'en' && !DESCRIPTION){
-      DESCRIPTION = description
-    }
-  })
+  if(descriptionEntries.length !== 0){
+    descriptionEntries.forEach(description => {
+      if(description.language.name === 'en' && !DESCRIPTION){
+        DESCRIPTION = description
+      }
+    })
+  }else{
+    DESCRIPTION = 'This move dont provide a description'
+  }
+
 
   return DESCRIPTION
 }
