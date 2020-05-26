@@ -15,6 +15,8 @@ import { Type} from './type/type.jsx'
 import { CacheProvider } from '../cacheContext.js'
 import { ListAbilities } from '../components/ability/Ability-list.jsx'
 import { Ability } from '../components/ability/Ability.jsx'
+import { ListGenerations } from '../components/generation/List-generation.jsx'
+import { Generation } from '../components/generation/Generation.jsx'
 
 export const App = () => (
   <CacheProvider>
@@ -30,6 +32,8 @@ export const App = () => (
         <Route path='/type/:id' exact><Type/></Route>
         <Route path='/ability' exact><ListAbilities/></Route>
         <Route path='/ability/:id' exact><Ability/></Route>
+        <Route path='/generation' exact><ListGenerations/></Route>
+        <Route path='/generation/:id' exact><Generation/></Route>
       </Switch>
     </Router>
   </CacheProvider>

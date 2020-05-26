@@ -20,6 +20,8 @@ export const Pokemon = () => {
     return (
       <div style={{textAlign : 'center', }}>
         <h1>{pokemon.name} ({pokemon.id})</h1>
+
+
         <div style={{display : 'flex', alignItems : 'center', margin : '1rem'}}>
           {pokemon.pictureURL ? <img src={pokemon.pictureURL} alt={pokemon.name} height='50%' width='50%'></img> : <p style={{width : '50%'}}><strong>This pokemon dont provide a image</strong></p>}
           <Card border="info" style={{ width: '50%' }}>
@@ -58,7 +60,7 @@ export const Pokemon = () => {
             <Accordion.Collapse eventKey='2'>
               <Card.Body>
                 {pokemon.abilities.map((ability, idx) => <strong key={idx}>
-                    <Link to={`ability/${ability.name}`}>{ability.name}</Link><br/>
+                    <Link to={`/ability/${ability.name}`}>{ability.name}</Link><br/>
                 </strong>)}
               </Card.Body>
             </Accordion.Collapse>
