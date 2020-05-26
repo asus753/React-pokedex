@@ -1,5 +1,5 @@
 import React from 'react'
-import { useFetchReducer } from '../../hooks/useSimpleFetch.js'
+import { useFetchReducer } from '../../hooks/useFetchWithCache.js'
 import pokeAPI from '../../pokeAPI.js'
 import { useParams } from 'react-router-dom'
 import {Loading} from '../general/Loading.jsx'

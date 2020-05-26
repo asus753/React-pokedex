@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import {useFetchReducer} from '../../hooks/useSimpleFetch.js'
+import {useFetchReducer} from '../../hooks/useFetchWithCache.js'
 import pokeAPI from '../../pokeAPI.js'
 import { Loading } from '../general/Loading.jsx'
 import {Alert, Card} from 'react-bootstrap'

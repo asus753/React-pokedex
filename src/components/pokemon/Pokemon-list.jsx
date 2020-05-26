@@ -1,6 +1,6 @@
 import { Paginator } from '../general/paginator.jsx'
 import React,{useState} from 'react'
-import { useFetchReducer } from '../../hooks/useSimpleFetch'
+import { useFetchReducer } from '../../hooks/useFetchWithCache.js'
 import {List} from '../general/List.jsx'
 import pokeAPI from '../../pokeAPI.js'
 import {Loading} from '../general/Loading.jsx'

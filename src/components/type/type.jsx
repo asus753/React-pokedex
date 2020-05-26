@@ -1,7 +1,7 @@
 import React from 'react'
 import { Loading } from '../general/Loading.jsx'
 import pokeAPI from '../../pokeAPI.js'
-import { useFetchReducer } from '../../hooks/useSimpleFetch.js'
+import { useFetchReducer } from '../../hooks/useFetchWithCache.js'
 import { Alert, Card, Accordion } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 import { mapearType } from '../../mappers/typePokemon.js'

@@ -20,9 +20,6 @@ export const Pokemon = () => {
     return (
       <div style={{textAlign : 'center', }}>
         <h1>{pokemon.name} ({pokemon.id})</h1>
-        {/* {pokemon.pictureURL ? <img src={pokemon.pictureURL} alt={pokemon.name} height='500px' width='500px'></img> : <p><strong>This pokemon dont provide a image</strong></p>}
-        <PokemonDescription/> */}
-
         <div style={{display : 'flex', alignItems : 'center', margin : '1rem'}}>
           {pokemon.pictureURL ? <img src={pokemon.pictureURL} alt={pokemon.name} height='50%' width='50%'></img> : <p style={{width : '50%'}}><strong>This pokemon dont provide a image</strong></p>}
           <Card border="info" style={{ width: '50%' }}>
