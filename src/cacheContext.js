@@ -15,7 +15,7 @@ const cacheReducer = (state, action) => {
 
 
 export const CacheProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(cacheReducer,JSON.parse(localStorage.getItem('POKE_API')))
+  const [state, dispatch] = useReducer(cacheReducer,{})
 
   useEffect(() => {
     const serializedState = JSON.stringify(state);

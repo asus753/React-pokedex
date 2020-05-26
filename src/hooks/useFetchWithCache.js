@@ -34,13 +34,10 @@ export const useFetchReducer = (fetchResource, URLparameter) => {
         dispatch({type : 'FAILURE', payload : error.message})
       }
     }
-
-    try{
-      if(cache.state[URLparameter]){
-        dispatch({type: 'SUCCESS', payload : cache.state[URLparameter]})
-        return
-      }else{fetchData()}
-    }catch(error){fetchData()}
+    if(cache.state[URLparameter]){
+      dispatch({type: 'SUCCESS', payload : cache.state[URLparameter]})
+      return
+    }else{fetchData()}
   },[fetchResource,URLparameter,cache])
 
   return state
