@@ -13,6 +13,9 @@ import { MovesList } from './move/Moves-list.jsx'
 import { TypesList } from './type/types-list.jsx'
 import { Type} from './type/type.jsx'
 import { CacheProvider } from '../cacheContext.js'
+import { ListAbilities } from '../components/ability/Ability-list.jsx'
+import { Ability } from '../components/ability/Ability.jsx'
+
 export const App = () => (
   <CacheProvider>
     <Router>
@@ -25,6 +28,8 @@ export const App = () => (
         <Route path='/move/:id' exact><Move/></Route>
         <Route path='/type' exact><TypesList/></Route>
         <Route path='/type/:id' exact><Type/></Route>
+        <Route path='/ability' exact><ListAbilities/></Route>
+        <Route path='/ability/:id' exact><Ability/></Route>
       </Switch>
     </Router>
   </CacheProvider>

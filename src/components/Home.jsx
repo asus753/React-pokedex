@@ -1,16 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Button } from 'react-bootstrap'
+import { Button, ButtonGroup } from 'react-bootstrap'
 
 export const Home = () => {
   return (
     <>
-      <Link to='/pokemon'>
-        <Button variant="outline-dark" size='lg' block style={{marginTop : '1rem'}}>Pokemons</Button>
+     <ButtonGroup style={{width : '100%'}}>
+     <Link to='/pokemon' style={{width : '50%'}}>
+        <Button variant="outline-dark" size='lg' block style={{marginTop : '1rem'}}>Pokemons by name</Button>
       </Link>
-      <Link to='/type'>
-        <Button variant="outline-dark" size='lg' block style={{marginTop : '1rem'}}>Types of pokemons</Button>
+      <Link to='/type' style={{width : '50%'}}>
+        <Button variant="outline-dark" size='lg' block style={{marginTop : '1rem'}}>Pokemons by type</Button>
      </Link>
+     </ButtonGroup>
       <Link to='/move'>
         <Button variant="outline-dark" size='lg' block style={{marginTop : '1rem'}}>Movements</Button>
       </Link>

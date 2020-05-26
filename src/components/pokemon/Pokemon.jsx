@@ -49,7 +49,7 @@ export const Pokemon = () => {
             <Accordion.Toggle as={Card.Header} eventKey='1'>Types</Accordion.Toggle>
             <Accordion.Collapse eventKey='1'>
               <Card.Body>
-                {pokemon.type.map((type,idx) => <strong key={idx}><Link to={`type/${type.name}`}>{type.name}</Link><br/></strong>)}
+                {pokemon.type.map((type,idx) => <strong key={idx}><Link to={`/type/${type.name}`}>{type.name}</Link><br/></strong>)}
               </Card.Body>
             </Accordion.Collapse>
           </Card>
