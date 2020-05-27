@@ -25,15 +25,15 @@ export const App = () => (
       <Switch>
         <Route path='/' exact><Home/></Route>
         <Route path='/pokemon' exact><Pokedex/></Route>
-        <Route path='/pokemon/:id' exact><Pokemon/></Route>
+        <Route path='/pokemon/:id'><Pokemon/></Route>
         <Route path='/move' exact><MovesList/></Route>
-        <Route path='/move/:id' exact><Move/></Route>
+        <Route path='/move/:id' ><Move/></Route>
         <Route path='/type' exact><TypesList/></Route>
-        <Route path='/type/:id' exact><Type/></Route>
+        <Route path='/type/:id' ><Type/></Route>
         <Route path='/ability' exact><ListAbilities/></Route>
-        <Route path='/ability/:id' exact><Ability/></Route>
+        <Route path='/ability/:id' ><Ability/></Route>
         <Route path='/generation' exact><ListGenerations/></Route>
-        <Route path='/generation/:id' exact><Generation/></Route>
+        <Route path='/generation/:id'><Generation/></Route>
       </Switch>
     </Router>
   </CacheProvider>
