@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Alert } from 'react-bootstrap'
 import  { useFetchReducer } from '../../hooks/useFetchWithCache.js'
 import pokeAPI from '../../pokeAPI.js'
-import { Paginator } from '../general/paginator.jsx'
+import { Paginator } from '../general/Paginator.jsx'
 import { Loading } from '../general/Loading.jsx'
 import { List} from '../general/List.jsx'
 
