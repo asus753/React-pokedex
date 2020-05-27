@@ -1,4 +1,4 @@
-import TypePokemon from '../entities/type.js'
+import Type from '../entities/type.js'
 
 export const mapearType = (dataType) => {
   const {
@@ -19,7 +19,7 @@ export const mapearType = (dataType) => {
   }
 
 
-  return new TypePokemon(
+  return new Type(
     id,
     name,
     generation,

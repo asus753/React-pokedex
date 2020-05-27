@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams, Link } from 'react-router-dom'
 import pokeAPI from '../../pokeAPI.js'
 import { useFetchReducer } from '../../hooks/useFetchWithCache.js'
-import { Alert, Accordion, Card, Table } from 'react-bootstrap'
+import { Alert, Card } from 'react-bootstrap'
 import { Loading } from '../general/Loading.jsx'
 import { mapearAbility } from '../../mappers/ability.js'
 

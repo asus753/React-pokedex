@@ -4,7 +4,7 @@ import pokeAPI from '../../pokeAPI.js'
 import { useFetchReducer } from '../../hooks/useFetchWithCache.js'
 import { Alert, Card, Accordion } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
-import { mapearType } from '../../mappers/typePokemon.js'
+import { mapearType } from '../../mappers/type.js'
 import { Link } from 'react-router-dom'
 
 export const Type = () => {
