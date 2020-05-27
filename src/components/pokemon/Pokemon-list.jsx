@@ -1,4 +1,4 @@
-import { Paginator } from '../general/paginator.jsx'
+import { Paginator } from '../general/Paginator.jsx'
 import React,{useState} from 'react'
 import { useFetchReducer } from '../../hooks/useFetchWithCache.js'
 import {List} from '../general/List.jsx'
