@@ -17,7 +17,7 @@ export const Type = () => {
     return (<>
       <h1 style={{textAlign : 'center'}}>{type.name} ({type.id})</h1>
       <div style={{display : 'flex', textAlign : 'center', marginTop : '1rem'}}>
-        <Card border='info' style={{marginRight : '1rem', width : 'auto'}}>
+        <Card border='info' style={{marginRight : '1rem', width : '50%'}}>
           <Card.Body>
             <Card.Title>Type info</Card.Title>
             <p>
@@ -27,7 +27,7 @@ export const Type = () => {
             </p>
           </Card.Body>
         </Card>
-        <Card border='info' style={{width : '-webkit-fill-available'}}>
+        <Card border='info' style={{width : '50%'}}>
           <Card.Body>
             <Card.Title>Damage relations</Card.Title>
             <ul style={{textAlign : 'initial'}}>

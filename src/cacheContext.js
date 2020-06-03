@@ -5,7 +5,7 @@ CacheContext.displayName = 'Cache'
 
 const cacheReducer = (state, action) => {
   const {type, payload} = action
-
+  
   switch(type){
     case 'SET_CACHE': return {...state, [payload.key] : payload.value}
     default : return {...state}

@@ -23,11 +23,11 @@ export const Generation = () => {
       </Card>
       <Accordion>
         <Card>
-          <Accordion.Toggle as={Card.Header} eventKey='0'>Pokemons added</Accordion.Toggle>
+          <Accordion.Toggle as={Card.Header} eventKey='0'>Pokemons species added</Accordion.Toggle>
           <Accordion.Collapse eventKey='0'>
             <Card.Body>
               <ul style={{textAlign : 'initial', columns : '2'}}>
-                {generation.pokemons.map(pokemon => <li><Link to={`/pokemon/${pokemon}`}><strong>{pokemon}</strong></Link></li>)}
+                {generation.pokemons.map((pokemon, idx) => <li key={idx}><strong>{pokemon}</strong></li>)}
               </ul>
             </Card.Body>
           </Accordion.Collapse>
@@ -37,7 +37,7 @@ export const Generation = () => {
           <Accordion.Collapse eventKey='1'>
             <Card.Body>
               <ul style={{textAlign : 'initial', columns : '2'}}>
-                {generation.moves.map(move => <li><Link to={`/move/${move}`}><strong>{move}</strong></Link></li>)}
+                {generation.moves.map((move, idx) => <li key={idx}><Link to={`/move/${move}`}><strong>{move}</strong></Link></li>)}
               </ul>
             </Card.Body>
           </Accordion.Collapse>
@@ -47,7 +47,7 @@ export const Generation = () => {
           <Accordion.Collapse eventKey='2'>
             <Card.Body>
               <ul style={{textAlign : 'initial', columns : '2'}}>
-                {generation.abilities.map(ability => <li><Link to={`/ability/${ability}`}><strong>{ability}</strong></Link></li>)}
+                {generation.abilities.map((ability, idx) => <li key={idx}><Link to={`/ability/${ability}`}><strong>{ability}</strong></Link></li>)}
               </ul>
             </Card.Body>
           </Accordion.Collapse>
@@ -57,7 +57,7 @@ export const Generation = () => {
           <Accordion.Collapse eventKey='3'>
             <Card.Body>
               <ul style={{textAlign : 'initial', columns : '2'}}>
-                {generation.moves.map(move => <li><Link to={`/move/${move}`}><strong>{move}</strong></Link></li>)}
+                {generation.moves.map((move, idx) => <li key={idx}><Link to={`/move/${move}`}><strong>{move}</strong></Link></li>)}
               </ul>
             </Card.Body>
           </Accordion.Collapse>
@@ -67,7 +67,7 @@ export const Generation = () => {
           <Accordion.Collapse eventKey='4'>
             <Card.Body>
               <ul style={{textAlign : 'initial', columns : '2'}}>
-                {generation.types.map(type => <li><Link to={`/type/${type}`}><strong>{type}</strong></Link></li>)}
+                {generation.types.map((type, idx) => <li key={idx}><Link to={`/type/${type}`}><strong>{type}</strong></Link></li>)}
               </ul>
             </Card.Body>
           </Accordion.Collapse>

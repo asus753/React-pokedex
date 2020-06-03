@@ -1,5 +1,5 @@
 import { CacheContext } from '../cacheContext.js'
-import { useReducer, useEffect, useContext} from 'react'
+import { useReducer, useEffect, useContext, useCallback} from 'react'
 
 
 const initialState = { loading: false, data: null, error: null };
@@ -45,3 +45,30 @@ export const useFetchReducer = (fetchResource, URLparameter) => {
 
   return state
 }
+
+/* export const useImperativeFetch = (fetchResource) => {
+  const cache = useContext(CacheContext)
+  const [state, dispatch] = useReducer(fetchReducer, initialState)
+
+  const startFetch = (URLparameter) => {
+    const fetchData = async () => {
+      dispatch({type : 'LOAD'})
+      try{
+        const resource = await fetchResource(URLparameter)
+        dispatch({type : 'SUCCESS', payload : resource})
+        cache.dispatch({type : 'SET_CACHE', payload : {key : URLparameter, value : resource}}) 
+      }catch(error){
+        dispatch({type : 'FAILURE', payload : error.message})
+      }
+    }
+    try{
+      if(cache.state[URLparameter]){
+        dispatch({type: 'SUCCESS', payload : cache.state[URLparameter]})
+        return
+      }else{fetchData()}
+    }catch(error){fetchData()}
+  }
+  
+
+  return {state, startFetch}
+} */
