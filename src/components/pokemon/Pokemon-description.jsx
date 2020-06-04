@@ -5,9 +5,11 @@ import { useParams } from 'react-router-dom'
 import {Loading} from '../general/Loading.jsx'
 
 export const PokemonDescription = () => {
+  
   const { id } = useParams()
   const {data , error, loading} = useFetchReducer(pokeAPI.search,`pokemon-species/${id}`)
 
+  
   if(loading){return <Loading/>}
   if(error){return <p><strong>This pokemon dont provide a description</strong></p>}
   if(data){return <p>{getDescription(data.flavor_text_entries)}</p>}

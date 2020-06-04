@@ -1,59 +1,27 @@
-import { useReducer, useState, useEffect, useContext} from 'react'
+import { useState, useContext} from 'react'
+import { useHistory } from 'react-router-dom'
 import { CacheContext } from '../cacheContext.js'
 
-const initialState = {founded : false, error : false, loading : false}
-
-const fetchReducer = (state, action) => {
-  const { type } = action
-
-  switch(type){
-    case 'LOAD' : 
-      return {...state, founded : false, error : false, loading : true}
-    case 'SUCCESS' : 
-      return {...state, founded : true, error : false, loading : false}
-    case 'FAILURE' : 
-      return {...state, founded : false, error : 'pokemon not founded', loading : false}
-    case 'CLEAR' : 
-      return {...state, founded : false, error : false, loading : false}
-    default : 
-      return state
-  }
-}
-
-export const useSearchBar = (fetchResource) => {
+export const useSearchBar = (fetchResource, URLparameter) => {
   const [input, setInput] = useState('')
-  const [search, setSearch] = useState(false)
-  const [state, dispatch] = useReducer(fetchReducer, initialState)
+  const [search, setSearch] = useState('NULL')
   const cache = useContext(CacheContext)
+  const history = useHistory()
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try{
-        const resource = await fetchResource(`pokemon/${input}`)
-        cache.dispatch({type : 'SET_CACHE', payload : {key : `pokemon/${input}`, value : resource}}) 
-        dispatch({type : 'SUCCESS'})
-        setSearch(false)
-      }catch(error){
-        dispatch({type : 'FAILURE'})
-      }
+  const fetchPokemon = async () => {
+    try{
+      setSearch('LOADING')
+      const resource = await fetchResource(URLparameter.concat(input.toLowerCase()))
+      cache.dispatch({type : 'SET_CACHE', payload : {key : URLparameter.concat(input.toLowerCase()), value : resource}})
+      restart()
+      history.replace('/pokemon/'.concat(input.toLowerCase()),{})
+    }catch(error){
+      setSearch('NOT FOUNDED')
     }
-
-    if(search){
-      dispatch({type : 'LOAD'})
-      try{
-        if(cache.state[`pokemon/${input}`]){
-          dispatch({type : 'SUCCESS'})
-          return
-        }else{fetchData()}
-      }catch(error){
-        fetchData()
-      }
-    }
-  }, [fetchResource, input, search, cache])
-
-  const clearData = () => {
-    dispatch({type : 'CLEAR'})
+  }
+  const restart = () => {
+    setSearch('NULL')
   }
 
-  return {state, input, setInput, setSearch, clearData}
+  return {search, input, setInput, fetchPokemon}
 }
