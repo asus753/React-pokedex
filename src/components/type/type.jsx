@@ -31,12 +31,12 @@ export const Type = () => {
           <Card.Body>
             <Card.Title>Damage relations</Card.Title>
             <ul style={{textAlign : 'initial'}}>
-              <li>Double damage from : {type.damageRelations.doubleDamageFrom.map(typeName => <Link to={'/type/'.concat(typeName)}>{typeName} </Link>)}</li>
-              <li>Double damage to : {type.damageRelations.doubleDamegeTo.map(typeName => <Link to={'/type/'.concat(typeName)}>{typeName} </Link>)}</li>
-              <li>Half damage from : {type.damageRelations.halfDamagefrom.map(typeName => <Link to={'/type/'.concat(typeName)}>{typeName} </Link>)}</li>
-              <li>Half damage to : {type.damageRelations.halfDamageTo.map(typeName => <Link to={'/type/'.concat(typeName)}>{typeName} </Link>)}</li>
-              <li>No damage from : {type.damageRelations.noDamageFrom.map(typeName => <Link to={'/type/'.concat(typeName)}>{typeName} </Link>)}</li>
-              <li>No damage to : {type.damageRelations.noDamageTo.map(typeName => <Link to={'/type/'.concat(typeName)}>{typeName} </Link>)}</li>
+              <li>Double damage from : {type.damageRelations.doubleDamageFrom.map((typeName, idx) => <Link key={idx} to={'/type/'.concat(typeName)}>{typeName} </Link>)}</li>
+              <li>Double damage to : {type.damageRelations.doubleDamegeTo.map((typeName, idx) => <Link key={idx} to={'/type/'.concat(typeName)}>{typeName} </Link>)}</li>
+              <li>Half damage from : {type.damageRelations.halfDamagefrom.map((typeName, idx) => <Link key={idx} to={'/type/'.concat(typeName)}>{typeName} </Link>)}</li>
+              <li>Half damage to : {type.damageRelations.halfDamageTo.map((typeName, idx) => <Link key={idx} to={'/type/'.concat(typeName)}>{typeName} </Link>)}</li>
+              <li>No damage from : {type.damageRelations.noDamageFrom.map((typeName, idx) => <Link key={idx} to={'/type/'.concat(typeName)}>{typeName} </Link>)}</li>
+              <li>No damage to : {type.damageRelations.noDamageTo.map((typeName, idx) => <Link key={idx} to={'/type/'.concat(typeName)}>{typeName} </Link>)}</li>
             </ul>
           </Card.Body>
         </Card>
@@ -48,8 +48,8 @@ export const Type = () => {
           <Accordion.Collapse eventKey='0'>
             <Card.Body>
               <ul style={{columns : '2', textAlign : 'initial'}}>
-                {type.pokemons.map(pokemon => (
-                  <li><Link to={`/pokemon/${pokemon}`}><strong>{pokemon}</strong></Link></li>
+                {type.pokemons.map((pokemon, idx) => (
+                  <li key={idx}><Link to={`/pokemon/${pokemon}`}><strong>{pokemon}</strong></Link></li>
                 ))}
               </ul>
             </Card.Body>
@@ -60,8 +60,8 @@ export const Type = () => {
           <Accordion.Collapse eventKey='1'>
             <Card.Body>
               <ul style={{columns : '2', textAlign : 'initial'}}>
-                {type.moves.map(move => (
-                  <li><Link to={`/move/${move}`}><strong>{move}</strong></Link></li>
+                {type.moves.map((move, idx) => (
+                  <li key={idx}><Link to={`/move/${move}`}><strong>{move}</strong></Link></li>
                 ))}
               </ul>
             </Card.Body>
