@@ -1,13 +1,10 @@
 import React from 'react'
 import { useFetchReducer } from '../../hooks/useFetchWithCache.js'
 import pokeAPI from '../../pokeAPI.js'
-import { useParams } from 'react-router-dom'
 import {Loading} from '../general/Loading.jsx'
 
-export const PokemonDescription = () => {
-  
-  const { id } = useParams()
-  const {data , error, loading} = useFetchReducer(pokeAPI.search,`pokemon-species/${id}`)
+export const PokemonDescription = ({specieName}) => {
+  const {data , error, loading} = useFetchReducer(pokeAPI.search,'pokemon-species/'.concat(specieName))
 
   
   if(loading){return <Loading/>}
@@ -19,10 +16,12 @@ export const PokemonDescription = () => {
 
 const getDescription = (descriptionList) => {
   let DESCRIPTION
-  descriptionList.forEach(description => {
-    if(description.language.name === 'en' && DESCRIPTION === undefined){
-      DESCRIPTION = description.flavor_text
-    } 
-  })
+
+  for(let idx = descriptionList.length - 1; idx >= 0; idx-- ){
+    if(descriptionList[idx].language.name === 'en' && DESCRIPTION === undefined){
+      DESCRIPTION = descriptionList[idx].flavor_text
+    }
+  }
+
   return DESCRIPTION
 }

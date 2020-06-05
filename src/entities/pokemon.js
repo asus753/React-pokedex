@@ -11,9 +11,10 @@ export default class Pokemon {
    * @param {Array<String>} moves 
    * @param {Array<String>} abilities 
    * @param {Array<String>} stats 
+   * @param {String} species
    */
 
-  constructor(name,id,pictureURL,height,weight,type,moves,abilities,stats){
+  constructor(name,id,pictureURL,height,weight,type,moves,abilities,stats, species){
     this.name = name
     this.id = id
     this.pictureURL = pictureURL
@@ -23,5 +24,6 @@ export default class Pokemon {
     this.moves = moves
     this.abilities = abilities
     this.stats = stats
+    this.species = species
   }
 }

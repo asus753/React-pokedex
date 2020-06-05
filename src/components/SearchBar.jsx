@@ -1,5 +1,5 @@
-import React,{useRef} from 'react'
-import {Form, FormControl, Button, Spinner, Overlay} from 'react-bootstrap'
+import React from 'react'
+import {Form, FormControl, Button, Spinner} from 'react-bootstrap'
 import pokeAPI from '../pokeAPI.js'
 import { useSearchBar } from '../hooks/useSearchBar.js'
 
@@ -7,7 +7,7 @@ export const SearchBar = () => {
   const { input, setInput, search, fetchPokemon} = useSearchBar(pokeAPI.search, 'pokemon/')
 
   return (
-    <Form inline onSubmit={(event) => {event.preventDefault(); fetchPokemon()}}>
+    <Form inline onSubmit={(event) => {event.preventDefault(); fetchPokemon()}} >
       <FormControl
         type="text"
         placeholder="pokemon"

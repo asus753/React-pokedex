@@ -8,13 +8,14 @@ export const mapearPokemon = (dataPokemon) => {
     sprites : { front_default : pictureURL },
     stats,
     height,
-    weight
+    weight,
+    species : { name : species}
   } = dataPokemon
   const moves = getNames(dataPokemon.moves, 'move')
   const abilities = getNames(dataPokemon.abilities, 'ability')
   const type = getNames(dataPokemon.types, 'type')
 
-  return new Pokemon(name, id, pictureURL, height, weight, type, moves, abilities, stats)
+  return new Pokemon(name, id, pictureURL, height, weight, type, moves, abilities, stats, species)
 }
 
 const getNames = (arrayElemnts, typeElement) => {

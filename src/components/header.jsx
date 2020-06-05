@@ -5,11 +5,14 @@ import { SearchBar } from './SearchBar.jsx'
 
 
 export const Header = () => {
+
+
   return (
     <Navbar bg="dark" variant="dark">
-      <Navbar.Brand>Pokedex</Navbar.Brand>
-      <Nav className="mr-auto" as={Link} to='/'>
-        Home
+      <Navbar.Brand as={Link} to='/'>Pokedex</Navbar.Brand>
+      <Nav className='mr-auto'>
+        <Nav.Link as={Link} to='/pokemon'>pokemons</Nav.Link>
+        <Nav.Link as={Link} to='/generation'>generations</Nav.Link>
       </Nav>
       <SearchBar/>
   </Navbar>

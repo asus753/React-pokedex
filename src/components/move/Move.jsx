@@ -23,7 +23,7 @@ export const Move = () => {
         <h1>{move.name} ({move.id})</h1>
         <p>{move.description.text} <br></br><small>(version : {move.description.version})</small></p>
         <div style={{display : 'flex'}}>
-          <Card style={{width : '30rem', marginRight : '1rem'}} border='info'>
+          <Card style={{width : '35%', marginRight : '1rem'}} border='info'>
             <Card.Body>
               <Card.Title>Move stats</Card.Title>
               <ul style={{textAlign: 'initial'}}>
@@ -35,7 +35,7 @@ export const Move = () => {
               </ul>
             </Card.Body>
           </Card>
-          <Card border='info' style={{width : '100%'}}>
+          <Card border='info' style={{width : '65%'}}>
             <Card.Body>
               <Card.Title>Description</Card.Title>
               <p>This movement was introduced in <strong>"{move.generation}"</strong></p>

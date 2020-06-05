@@ -30,7 +30,7 @@ export const Pokemon = () => {
             <Card.Body>
               <Card.Title>Description</Card.Title>
               <Card.Text as='span'>
-                <PokemonDescription/>
+                <PokemonDescription specieName={pokemon.species}/>
                 <p>Height: <strong>{pokemon.height}</strong>, Weight: <strong>{pokemon.weight}</strong></p>
               </Card.Text>
             </Card.Body>

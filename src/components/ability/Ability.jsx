@@ -21,10 +21,10 @@ export const Ability = () => {
       <div style={{textAlign : 'center'}}>
         <h1>{ability.name} ({ability.id})</h1>
         <p>{ability.description.text}<br/><small>(version : {ability.description.version})</small></p>
-        <Card border="info" style={{ width: '100%', margin : '1rem' }}>
+        <Card border="info" style={{margin : '1rem'}}>
           <Card.Body>
             <Card.Title>Ability info</Card.Title>
-            <Card.Text>
+            <Card.Text as='label'>
               <p>This ability was introduced in the <strong>{ability.generation}</strong></p>
               <p><strong>Effect description: </strong>{ability.longEffectDescription}</p>
             </Card.Text>
@@ -32,7 +32,7 @@ export const Ability = () => {
         </Card>
         <h3>Pokemons with this ability</h3>
         <ul style={{width : '100%', marginTop : '1rem'}} className="list-group list-group-flush">
-          {ability.pokemons.map(pokemon => <li className='list-group-item'>
+          {ability.pokemons.map((pokemon, idx) => <li className='list-group-item' key={idx}>
             <Link to={`/pokemon/${pokemon}`}><strong>{pokemon}</strong></Link>
           </li>)}
         </ul>
