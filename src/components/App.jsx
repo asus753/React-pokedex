@@ -20,7 +20,7 @@ import { Generation } from '../components/generation/Generation.jsx'
 
 export const App = () => (
   <CacheProvider>
-    <Router>
+    <Router basename='/react-pokedex'>
       <Header/>
       <Switch>
         <Route path='/' exact><Home/></Route>
