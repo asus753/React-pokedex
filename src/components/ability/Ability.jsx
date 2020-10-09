@@ -18,10 +18,10 @@ export const Ability = () => {
     const ability = mapearAbility(data)
 
     return (
-      <div style={{textAlign : 'center'}}>
+      <div className="text-center">
         <h1>{ability.name} ({ability.id})</h1>
         <p>{ability.description.text}<br/><small>(version : {ability.description.version})</small></p>
-        <Card border="info" style={{margin : '1rem'}}>
+        <Card border="info" className="m-3">
           <Card.Body>
             <Card.Title>Ability info</Card.Title>
             <Card.Text as='label'>
@@ -31,7 +31,7 @@ export const Ability = () => {
           </Card.Body>
         </Card>
         <h3>Pokemons with this ability</h3>
-        <ul style={{width : '100%', marginTop : '1rem'}} className="list-group list-group-flush">
+        <ul className="list-group list-group-flush mt-3 w-100">
           {ability.pokemons.map((pokemon, idx) => <li className='list-group-item' key={idx}>
             <Link to={`/pokemon/${pokemon}`}><strong>{pokemon}</strong></Link>
           </li>)}
