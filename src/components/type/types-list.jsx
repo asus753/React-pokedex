@@ -1,6 +1,6 @@
 import React from 'react'
 import { List } from '../general/List.jsx'
-import { Loading} from '../general/Loading.jsx'
+import { Loading } from '../general/Loading.jsx'
 import pokeAPI from '../../pokeAPI.js'
 import { useFetchReducer } from '../../hooks/useFetchWithCache.js'
 import { Alert } from 'react-bootstrap'
