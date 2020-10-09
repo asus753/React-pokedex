@@ -6,7 +6,6 @@ import { SearchBar } from './SearchBar.jsx'
 
 export const Header = () => {
 
-
   return (
     <Navbar bg="dark" variant="dark">
       <Navbar.Brand as={Link} to='/'>Pokedex</Navbar.Brand>
@@ -15,6 +14,6 @@ export const Header = () => {
         <Nav.Link as={Link} to='/generation'>generations</Nav.Link>
       </Nav>
       <SearchBar/>
-  </Navbar>
+    </Navbar>
   )
 }
