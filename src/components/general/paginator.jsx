@@ -16,8 +16,8 @@ export const Paginator = ({page, changePage, totalElemnts, elementsPerPage = 20}
     return null
   }else{
     return (
-      <div style={{justifyContent : 'center', marginTop : '1rem', textAlign : 'center'}}>
-        <Pagination style={{justifyContent : 'center'}}>
+      <div className="justify-content-center mt-1 text-center">
+        <Pagination className="justify-content-center">
           {pages.map((page,idx) => {
             if(page === 'LEFT') return (
               <Pagination.Ellipsis key={idx} onClick={(event) => {handleMoveLeft(event)}}/>

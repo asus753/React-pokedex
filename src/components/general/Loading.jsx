@@ -4,7 +4,7 @@ import {Spinner} from 'react-bootstrap'
 
 export const Loading = () => {
   return (
-    <div style={{textAlign : 'center'}}>
+    <div className="text-center">
       <Spinner animation="grow" />
   </div>
   )
