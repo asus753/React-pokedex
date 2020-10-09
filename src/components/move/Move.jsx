@@ -19,14 +19,14 @@ export const Move = () => {
     const move = mapearMove(data)
     
     return (
-      <div style={{textAlign : 'center', }}>
+      <div className="text-center">
         <h1>{move.name} ({move.id})</h1>
         <p>{move.description.text} <br></br><small>(version : {move.description.version})</small></p>
-        <div style={{display : 'flex'}}>
-          <Card style={{width : '35%', marginRight : '1rem'}} border='info'>
+        <div className="d-flex">
+          <Card style={{width : '35%'}} className="mr-3" border='info'>
             <Card.Body>
               <Card.Title>Move stats</Card.Title>
-              <ul style={{textAlign: 'initial'}}>
+              <ul className="text-left">
                 <li><strong>Damage class: </strong>{move.damageClass}</li>
                 <li><strong>Type: </strong>{move.type}</li>
                 <li><strong>Accuracy: </strong>{move.accuracy}</li>
