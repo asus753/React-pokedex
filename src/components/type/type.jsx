@@ -17,7 +17,7 @@ export const Type = () => {
     return (<>
       <h1 className="text-center">{type.name} ({type.id})</h1>
       <div className="mt-3 d-flex">
-        <Card border='info' style={{width : '50%'}} className="text-center mr-3">
+        <Card border='info' className="text-center mr-3 w-50">
           <Card.Body>
             <Card.Title>Type info</Card.Title>
             <p>
@@ -27,7 +27,7 @@ export const Type = () => {
             </p>
           </Card.Body>
         </Card>
-        <Card border='info' style={{width : '50%'}}>
+        <Card border='info' className="w-50">
           <Card.Body>
             <Card.Title className="text-center">Damage relations</Card.Title>
             <ul>

@@ -25,8 +25,8 @@ export const Pokemon = () => {
 
 
         <div className="d-flex align-items-center m-3">
-          {pokemon.pictureURL ? <img src={pokemon.pictureURL} alt={pokemon.name} height='50%' width='50%'></img> : <p style={{width : '50%'}}><strong>This pokemon dont provide a image</strong></p>}
-          <Card border="info" style={{ width: '50%' }}>
+          {pokemon.pictureURL ? <img src={pokemon.pictureURL} alt={pokemon.name} height='50%' width='50%'></img> : <p className="w-50"><strong>This pokemon dont provide a image</strong></p>}
+          <Card border="info" className="w-50">
             <Card.Body>
               <Card.Title>Description</Card.Title>
               <Card.Text as='span'>

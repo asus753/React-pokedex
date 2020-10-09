@@ -18,7 +18,7 @@ export const MovesList = () => {
   return (
     <>
       {numberElements && (
-        <div style={{textAlign : 'center'}}>
+        <div className="text-center">
         <h3>There are a total of {numberElements} moves</h3>
         <Paginator page={currentPage} changePage={setCurrentPage} totalElemnts={numberElements}></Paginator>
         </div>
