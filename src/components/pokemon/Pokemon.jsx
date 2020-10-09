@@ -20,11 +20,11 @@ export const Pokemon = () => {
     
     
     return (
-      <div style={{textAlign : 'center', }}>
+      <div className="text-center">
         <h1>{pokemon.name} ({pokemon.id})</h1>
 
 
-        <div style={{display : 'flex', alignItems : 'center', margin : '1rem'}}>
+        <div className="d-flex align-items-center m-3">
           {pokemon.pictureURL ? <img src={pokemon.pictureURL} alt={pokemon.name} height='50%' width='50%'></img> : <p style={{width : '50%'}}><strong>This pokemon dont provide a image</strong></p>}
           <Card border="info" style={{ width: '50%' }}>
             <Card.Body>
@@ -41,7 +41,7 @@ export const Pokemon = () => {
             <Accordion.Toggle as={Card.Header} eventKey='0'>Moves</Accordion.Toggle>
             <Accordion.Collapse eventKey='0'>
               <Card.Body>
-                <ul style={{columns : '2', textAlign : 'initial'}}>
+                <ul style={{columns : '2'}} className="text-left">
                   {pokemon.moves.map((move, idx) => <li key={idx}>
                     <Link to={`/move/${move}`}><strong>{move}</strong></Link>
                   </li>)}
