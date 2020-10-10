@@ -21,7 +21,9 @@ import { Generation } from '../components/generation/Generation.jsx'
 export const App = () => (
   <CacheProvider>
     <Router>
+      
       <Header/>
+     
       <Switch>
         <Route path='/' exact><Home/></Route>
         <Route path='/pokemon' exact><Pokedex/></Route>
