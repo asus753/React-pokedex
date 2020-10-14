@@ -12,8 +12,6 @@ const cacheReducer = (state, action) => {
   }
 }
 
-
-
 export const CacheProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cacheReducer,JSON.parse(localStorage.getItem('POKE_API')))
 
@@ -24,3 +22,4 @@ export const CacheProvider = ({ children }) => {
 
   return <CacheContext.Provider value={{ state, dispatch }}>{children}</CacheContext.Provider>;
 }
+

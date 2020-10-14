@@ -5,7 +5,7 @@ export default class Move {
    * @param {String} name 
    * @param {Number} id 
    * @param {String} effect 
-   * @param {String} damageClass q
+   * @param {String} damageClass
    * @param {String} type 
    * @param {String} generation 
    * @param {Number} pp 

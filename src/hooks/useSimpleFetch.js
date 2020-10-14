@@ -1,6 +1,9 @@
-import { useEffect, useReducer} from 'react'
+//this hook is not used for anything because dont handle cache
 
-/* export const useFetch = (fetchResource, URLparameter) => {
+import { useEffect, useReducer, useState} from 'react'
+
+//fetch without reducer
+export const useFetch = (fetchResource, URLparameter) => {
   const [data,setData] = useState(null)
   const [error,setError] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -18,10 +21,10 @@ import { useEffect, useReducer} from 'react'
       }
     }
     fetchData()
-  },[URLparameter])
+  },[URLparameter, fetchResource])
 
   return {data,error,loading}
-} */
+}
 
 //useFetch with useReducer
 const initialState = {loading : false, data : null, error : null}

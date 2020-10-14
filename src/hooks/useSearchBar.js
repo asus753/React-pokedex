@@ -2,26 +2,27 @@ import { useState, useContext} from 'react'
 import { useHistory } from 'react-router-dom'
 import { CacheContext } from '../cacheContext.js'
 
-export const useSearchBar = (fetchResource, URLparameter) => {
+export const useSearchBar = (fetchResource) => {
+  const URLparameter = 'pokemon/'
   const [input, setInput] = useState('')
-  const [search, setSearch] = useState('NULL')
+  const [searchState, setSearchState] = useState(null)
   const cache = useContext(CacheContext)
   const history = useHistory()
 
   const fetchPokemon = async () => {
     try{
-      setSearch('LOADING')
+      setSearchState('LOADING')
       const resource = await fetchResource(URLparameter.concat(input.toLowerCase()))
       cache.dispatch({type : 'SET_CACHE', payload : {key : URLparameter.concat(input.toLowerCase()), value : resource}})
-      restart()
+      endSearch()
       history.replace('/pokemon/'.concat(input.toLowerCase()),{})
     }catch(error){
-      setSearch('NOT FOUNDED')
+      setSearchState('NOT FOUNDED')
     }
   }
-  const restart = () => {
-    setSearch('NULL')
+  const endSearch = () => {
+    setSearchState(null)
   }
 
-  return {search, input, setInput, fetchPokemon}
+  return {searchState, input, setInput, fetchPokemon}
 }

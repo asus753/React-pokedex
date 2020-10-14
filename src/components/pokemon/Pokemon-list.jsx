@@ -1,15 +1,15 @@
 import { Paginator } from '../general/Paginator.jsx'
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { useFetchReducer } from '../../hooks/useFetchWithCache.js'
-import {List} from '../general/List.jsx'
+import { List } from '../general/List.jsx'
 import pokeAPI from '../../pokeAPI.js'
-import {Loading} from '../general/Loading.jsx'
-import {Alert} from 'react-bootstrap'
+import { Loading } from '../general/Loading.jsx'
+import { Alert } from 'react-bootstrap'
 
 export const Pokedex = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [numberElements, setNumberElements] = useState(null)
-  const {data , error, loading} = useFetchReducer(pokeAPI.search,getPageParameter(currentPage))
+  const { data , error, loading } = useFetchReducer(pokeAPI.search, getPageParameter(currentPage))
 
   if(data && !numberElements){
     setNumberElements(data.count)
@@ -18,7 +18,7 @@ export const Pokedex = () => {
   return (
     <>
     {numberElements && (
-      <div style={{textAlign : 'center'}}>
+      <div className="text-center">
       <h3>There are a total of {numberElements} pokemons</h3>
       <Paginator page={currentPage} changePage={setCurrentPage} totalElemnts={numberElements}></Paginator>
       </div>

@@ -4,26 +4,28 @@ import pokeAPI from '../pokeAPI.js'
 import { useSearchBar } from '../hooks/useSearchBar.js'
 
 export const SearchBar = () => {
-  const { input, setInput, search, fetchPokemon} = useSearchBar(pokeAPI.search, 'pokemon/')
+  const { input, setInput, searchState, fetchPokemon} = useSearchBar(pokeAPI.search)
 
   return (
-    <Form inline onSubmit={(event) => {event.preventDefault(); fetchPokemon()}} >
+    <Form inline onSubmit={(event) => {event.preventDefault(); fetchPokemon()}} className="flex-nowrap">
       <FormControl
         type="text"
         placeholder="pokemon"
-        className="mr-sm-2"
+        className="mr-2"
         value={input}
-        isInvalid={search === 'NOT FOUNDED'}
-        readOnly={search === 'LOADING' ? true : false}
+        isInvalid={searchState === 'NOT FOUNDED'}
+        readOnly={searchState === 'LOADING'}
         onChange={event => setInput(event.target.value)}
       />
-      {search === 'LOADING' ? <ButtonLoading/> : (
+      {searchState === 'LOADING' ? 
+        <ButtonLoading/> :
         <Button variant="outline-info" type='submit'>Search</Button>
-      )}
-      
+      }
     </Form>
   )
 }
+
+//cleans hooks, test with cypress
 
 
 const ButtonLoading = () => {

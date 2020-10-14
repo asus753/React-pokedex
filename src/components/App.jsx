@@ -8,7 +8,7 @@ import { Header } from './header.jsx'
 import { Pokedex } from './pokemon/Pokemon-list.jsx'
 import { Pokemon } from './pokemon/Pokemon.jsx'
 import { Move } from './move/Move.jsx'
-import {Home} from './Home.jsx'
+import { Home } from './Home.jsx'
 import { MovesList } from './move/Moves-list.jsx'
 import { TypesList } from './type/types-list.jsx'
 import { Type} from './type/type.jsx'
@@ -21,7 +21,9 @@ import { Generation } from '../components/generation/Generation.jsx'
 export const App = () => (
   <CacheProvider>
     <Router>
+      
       <Header/>
+     
       <Switch>
         <Route path='/' exact><Home/></Route>
         <Route path='/pokemon' exact><Pokedex/></Route>

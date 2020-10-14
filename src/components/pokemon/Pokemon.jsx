@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams, Link } from 'react-router-dom'
 import pokeAPI from '../../pokeAPI.js'
 import { useFetchReducer } from '../../hooks/useFetchWithCache.js'
-import { Alert, Accordion, Card, Table } from 'react-bootstrap'
+import { Alert, Accordion, Card, Table, Row, Col } from 'react-bootstrap'
 import { Loading } from '../general/Loading.jsx'
 import { PokemonDescription } from './Pokemon-description.jsx'
 import { mapearPokemon} from '../../mappers/pokemon.js'
@@ -20,28 +20,32 @@ export const Pokemon = () => {
     
     
     return (
-      <div style={{textAlign : 'center', }}>
+      <div className="text-center">
         <h1>{pokemon.name} ({pokemon.id})</h1>
 
+        <Row className="align-items-center justify-content-center mb-3">
+          <Col md>
+            {pokemon.pictureURL ? <img src={pokemon.pictureURL} alt={pokemon.name} height='100%' width='100%'></img> : <p><strong>This pokemon dont provide a image</strong></p>}
+          </Col>
+          <Col md>
+            <Card border="info">
+              <Card.Body>
+                <Card.Title>Description</Card.Title>
+                <Card.Text as='span'>
+                  <PokemonDescription specieName={pokemon.species}/>
+                  <p>Height: <strong>{pokemon.height}</strong>, Weight: <strong>{pokemon.weight}</strong></p>
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
 
-        <div style={{display : 'flex', alignItems : 'center', margin : '1rem'}}>
-          {pokemon.pictureURL ? <img src={pokemon.pictureURL} alt={pokemon.name} height='50%' width='50%'></img> : <p style={{width : '50%'}}><strong>This pokemon dont provide a image</strong></p>}
-          <Card border="info" style={{ width: '50%' }}>
-            <Card.Body>
-              <Card.Title>Description</Card.Title>
-              <Card.Text as='span'>
-                <PokemonDescription specieName={pokemon.species}/>
-                <p>Height: <strong>{pokemon.height}</strong>, Weight: <strong>{pokemon.weight}</strong></p>
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </div>
         <Accordion>
           <Card>
             <Accordion.Toggle as={Card.Header} eventKey='0'>Moves</Accordion.Toggle>
             <Accordion.Collapse eventKey='0'>
               <Card.Body>
-                <ul style={{columns : '2', textAlign : 'initial'}}>
+                <ul style={{columns : '2'}} className="text-left">
                   {pokemon.moves.map((move, idx) => <li key={idx}>
                     <Link to={`/move/${move}`}><strong>{move}</strong></Link>
                   </li>)}
@@ -71,7 +75,7 @@ export const Pokemon = () => {
             <Accordion.Toggle as={Card.Header} eventKey='3'>Stats</Accordion.Toggle>
             <Accordion.Collapse eventKey='3'>
               <Card.Body>
-                <Table striped bordered hover size="sm">
+                <Table striped bordered hover responsive size="sm">
                   <thead>
                     <tr>
                       {pokemon.stats.map((stat,idx) => <th key={idx} style={{width : `${100 / pokemon.stats.length}%`}}>
