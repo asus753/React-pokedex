@@ -4,7 +4,7 @@ import { Button, ButtonGroup } from 'react-bootstrap'
 
 export const Home = () => {
   return (
-    <>
+    <div id="main-buttons">
       <ButtonGroup className="w-100">
         <Link to='/pokemon' className="w-50">
           <Button variant="outline-dark" size='lg' block className="mt-3">Pokemons by name</Button>
@@ -22,6 +22,6 @@ export const Home = () => {
       <Link to='/generation'>
         <Button variant="outline-dark" size='lg' block className="mt-3">Generations</Button>
       </Link>
-    </>
+    </div>
   )
 }
