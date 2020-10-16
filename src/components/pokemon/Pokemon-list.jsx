@@ -19,13 +19,13 @@ export const Pokedex = () => {
     <>
     {numberElements && (
       <div className="text-center">
-      <h3>There are a total of {numberElements} pokemons</h3>
-      <Paginator page={currentPage} changePage={setCurrentPage} totalElemnts={numberElements}></Paginator>
+        <h3>There are a total of {numberElements} pokemons</h3>
+        <Paginator page={currentPage} changePage={setCurrentPage} totalElemnts={numberElements}></Paginator>
       </div>
     )}
     {loading && <Loading/>}
     {error && <Alert variant='danger'>{error}</Alert>}
-    {data && <List listElements={data.results.map(pokemon => pokemon.name)} typeElement='pokemon'/>}
+    {data && <List listElements={data.results.map(pokemon => pokemon.name)} typeElement='pokemon' id="pokemons-list"/>}
     </>
   )
 }
