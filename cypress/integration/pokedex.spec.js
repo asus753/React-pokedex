@@ -4,7 +4,7 @@
 
 describe('App test', () => {
   before(() => {
-    cy.visit(Cypress.config("baseUrl"))
+    cy.goToBaseUrl()
   })
 
   describe('navbar', () => {
@@ -74,21 +74,21 @@ describe('App test', () => {
     
   })
 
-  describe('pokemons page', () => {
+  describe('pokemons list page', () => {
     before(() => {
       cy.route2('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20', {
         fixture: 'first-page-pokemons.json',
         headers: {
           'access-control-allow-origin': 'http://localhost:3000/pokemon'
         }
-      }).as('firstpageofpokemons')
+      }).as('firstPageOfPokemons')
 
       cy.route2('https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20', {
         fixture: 'second-page-pokemons.json',
         headers: {
           'access-control-allow-origin': 'http://localhost:3000/pokemon'
         }
-      })
+      }).as('secondPageOfPokemons')
 
       cy.visit('http://localhost:3000/pokemon')
     })
@@ -139,6 +139,8 @@ describe('App test', () => {
       })
 
       it('second page', () => {
+        cy.get('.page-item').contains('2').click()
+
         cy.get('#pokemons-list').should('be.visible')
         cy.get('#pokemons-list').children('a').each($el => {
           expect($el.attr('href')).be.eq('/pokemon/' + $el.text())
@@ -151,4 +153,14 @@ describe('App test', () => {
 
   })
 
+  describe('pokemon page', () => {
+    before(() => {
+      cy.route2('https://pokeapi.co/api/v2/pokemon/bulbasaur', {
+        fixture: 'bulbasaur-pokemon.json',
+        headers: {
+          'access-control-allow-origin': 'http://localhost:3000/pokemon/bulbasaur'
+        }
+      }).as('bulbasaurPokemon')
+    })
+  })
 })
