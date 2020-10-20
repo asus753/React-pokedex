@@ -145,26 +145,3 @@ Cypress.Commands.add('stubAnyGeneration', () => {
     response: '@generationFixture'
   }).as('anyGeneration')
 })
-
-Cypress.Commands.add('testCompleteNavBar', () => {
-
-  cy.get('nav').should('be.visible')
-
-  cy.get('nav').children('.navbar-brand')
-    .should('have.text', 'Pokedex')
-    .and('be.visible')
-    .and('have.attr', 'href').and('eq', '/')
-
-  cy.get('nav').children('#navbar').contains('pokemons')
-    .should('be.visible')
-    .and('have.attr', 'href').and('eq', '/pokemon')
-
-  cy.get('nav').children('#navbar').contains('generations')
-    .should('be.visible')
-    .and('have.attr', 'href').and('eq', '/generation')
-
-  
-  cy.get('nav').children('#navbar').children('form').should('be.visible')
-  cy.get('nav').children('#navbar').children('form').children('input').should('be.visible')
-  cy.get('nav').children('#navbar').children('form').children('button').should('be.visible').and('have.text', 'Search')
-})
