@@ -19,7 +19,7 @@
     "start:dev": "react-scripts start",
     "build": "react-scripts build",
     "e2e-test": "npx cypress run --spec cypress/integration/pokedex.spec.js",
-    "open-cypress-gui": "npx cypress open --config-file ./cypress.json"
+    "open-cypress-gui": "cypress open --config-file ./cypress.json"
   },
   "eslintConfig": {
     "extends": "react-app"

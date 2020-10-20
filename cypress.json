@@ -1,5 +1,4 @@
 {
   "experimentalFetchPolyfill": true,
-  "experimentalNetworkStubbing": true,
   "baseUrl": "http://localhost:3000"   
 }
