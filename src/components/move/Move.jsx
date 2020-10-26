@@ -24,7 +24,7 @@ export const Move = () => {
         <p>{move.description.text} <br></br><small>(version : {move.description.version})</small></p>
         <Row>
           <Col md={4} className='mt-3'>
-            <Card border='info' className='h-100'>
+            <Card border='info' className='h-100' id='stats'>
               <Card.Body>
                 <Card.Title>Move stats</Card.Title>
                 <ul className="text-left">
@@ -38,7 +38,7 @@ export const Move = () => {
             </Card>
           </Col>
           <Col md className='mt-3'>
-            <Card border='info' className='h-100'>
+            <Card border='info' className='h-100' id='description'>
               <Card.Body>
                 <Card.Title>Description</Card.Title>
                 <p>This movement was introduced in <strong>"{move.generation}"</strong></p>
