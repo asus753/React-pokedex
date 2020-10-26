@@ -1,3 +1,5 @@
+/// <reference types="Cypress" />
+
 describe('homepage', () => {
   before(() => {
     cy.visit(Cypress.config('baseUrl'))

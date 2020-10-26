@@ -28,7 +28,7 @@ export const Pokemon = () => {
             {pokemon.pictureURL ? <img src={pokemon.pictureURL} alt={pokemon.name} height='100%' width='100%'></img> : <p><strong>This pokemon dont provide a image</strong></p>}
           </Col>
           <Col md>
-            <Card border="info">
+            <Card border="info" id='description'>
               <Card.Body>
                 <Card.Title>Description</Card.Title>
                 <Card.Text as='span'>
@@ -41,7 +41,7 @@ export const Pokemon = () => {
         </Row>
 
         <Accordion>
-          <Card>
+          <Card id='moves'>
             <Accordion.Toggle as={Card.Header} eventKey='0'>Moves</Accordion.Toggle>
             <Accordion.Collapse eventKey='0'>
               <Card.Body>
@@ -53,7 +53,7 @@ export const Pokemon = () => {
               </Card.Body>
             </Accordion.Collapse>
           </Card>
-          <Card>
+          <Card id='types'>
             <Accordion.Toggle as={Card.Header} eventKey='1'>Types</Accordion.Toggle>
             <Accordion.Collapse eventKey='1'>
               <Card.Body>
@@ -61,7 +61,7 @@ export const Pokemon = () => {
               </Card.Body>
             </Accordion.Collapse>
           </Card>
-          <Card>
+          <Card id='abilities'>
             <Accordion.Toggle as={Card.Header} eventKey='2'>Abilities</Accordion.Toggle>
             <Accordion.Collapse eventKey='2'>
               <Card.Body>
@@ -71,7 +71,7 @@ export const Pokemon = () => {
               </Card.Body>
             </Accordion.Collapse>
           </Card>
-          <Card>
+          <Card id='stats'>
             <Accordion.Toggle as={Card.Header} eventKey='3'>Stats</Accordion.Toggle>
             <Accordion.Collapse eventKey='3'>
               <Card.Body>
