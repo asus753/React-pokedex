@@ -77,7 +77,7 @@ describe('Pokemon page', () => {
         .should('have.length.at.least', 1)
 
       cy.get('.accordion').children('#moves').children('.show').children('.card-body').children('ul').children('li').each($el => {
-        cy.get($el.children('a')).should('have.attr', 'href')
+        cy.get($el.children('a')).should('have.attr', 'href').and('match', /^\/move\/[a-zA-Z0-9_.-]*$/)
         cy.get($el).should('be.visible')
       })
     })
@@ -93,7 +93,7 @@ describe('Pokemon page', () => {
         .and('be.visible')
 
       cy.get('.accordion').children('#types').children('.show').children('.card-body').children('strong').each($el => {
-        cy.get($el).children('a').should('have.attr', 'href')
+        cy.get($el).children('a').should('have.attr', 'href').and('match', /^\/type\/[a-zA-Z0-9_.-]*$/)
       })
     })
 
@@ -108,7 +108,7 @@ describe('Pokemon page', () => {
         .and('be.visible')
       
       cy.get('.accordion').children('#abilities').children('.show').children('.card-body').children('strong').each($el => {
-        cy.get($el).children('a').should('have.attr', 'href')
+        cy.get($el).children('a').should('have.attr', 'href').and('match', /^\/ability\/[a-zA-Z0-9_.-]*$/)
       })
     })
 

@@ -45,9 +45,11 @@ describe('pokemons list page', () => {
     it('first page', () => {
       cy.get('#pokemons-list').should('be.visible')
       cy.get('#pokemons-list').children('a').each($el => {
-        expect($el.attr('href')).be.eq('/pokemon/' + $el.text())
-        expect($el).be.visible
-        expect($el.children('button')).exist
+        cy.get($el)
+          .should('be.visible')
+          .and('have.attr', 'href').and('eq', '/pokemon/' + $el.text())
+        
+        cy.get($el).children('button').should('exist')
       })
     })
 
@@ -56,9 +58,11 @@ describe('pokemons list page', () => {
 
       cy.get('#pokemons-list').should('be.visible')
       cy.get('#pokemons-list').children('a').each($el => {
-        expect($el.attr('href')).be.eq('/pokemon/' + $el.text())
-        expect($el).be.visible
-        expect($el.children('button')).exist
+        cy.get($el)
+          .should('be.visible')
+          .and('have.attr', 'href').and('eq', '/pokemon/' + $el.text())
+        
+        cy.get($el).children('button').should('exist')
       })
     })
   })
