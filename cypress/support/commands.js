@@ -19,7 +19,7 @@ Cypress.Commands.add('stubAnyPokemon', () => {
   cy.fixture('bulbasaur.pokemon.json').as('pokemonFixture')
   cy.fixture('bulbasaur.pokemon-species.json').as('pokemonSpecieFixture')
   cy.route({
-    url: /^https:\/\/pokeapi\.co\/api\/v2\/pokemon\/(-?\d+|\w+)$/,
+    url: /^https:\/\/pokeapi\.co\/api\/v2\/pokemon\/[a-zA-Z0-9_.-]*$/,
     headers: {
       'access-control-allow-origin': Cypress.config('baseUrl'),
     },

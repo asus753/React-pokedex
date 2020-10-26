@@ -19,7 +19,7 @@ export const Type = () => {
       
       <Row>
         <Col className="mt-3" md>
-          <Card border='info' className="text-center">
+          <Card border='info' className="text-center h-100" id='type-info'>
             <Card.Body>
               <Card.Title>Type info</Card.Title>
               <p>
@@ -31,7 +31,7 @@ export const Type = () => {
           </Card>
         </Col>
         <Col className="mt-3" md>
-          <Card border='info'>
+          <Card border='info' id='damage-relations' className='h-100'>
             <Card.Body>
               <Card.Title className="text-center">Damage relations</Card.Title>
               <ul>
