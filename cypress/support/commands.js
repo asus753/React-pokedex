@@ -136,7 +136,7 @@ Cypress.Commands.add('stubGenerationsList', () => {
 
 Cypress.Commands.add('stubAnyGeneration', () => {
   cy.server()
-  cy.fixture('generation-1.generation.json').as('generationFixture')
+  cy.fixture('generation-vi.generation.json').as('generationFixture')
   cy.route({
     url: /^https:\/\/pokeapi\.co\/api\/v2\/generation\/(\w+-\w+|[0-9]+)$/,
     headers: {
