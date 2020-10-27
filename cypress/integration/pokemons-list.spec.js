@@ -1,7 +1,17 @@
+/// <reference types="Cypress" />
+
+import pokemons from '../fixtures/pokemons-list.json'
+
 describe('pokemons list page', () => {
+  const TOTAL_POKEMONS = pokemons.count
+
   before(() => {
     cy.stubPokemonsList()
     cy.visit(Cypress.config('baseUrl') + '/pokemon')
+  })
+
+  it('shows the total number of pokemon', () => {
+    cy.get('h3').contains(TOTAL_POKEMONS).should('exist')
   })
 
   context('pagination bar', () => {
@@ -42,27 +52,39 @@ describe('pokemons list page', () => {
       cy.stubPokemonsList()
     })
 
-    it('first page', () => {
+    it('renders the list with all pokemons provided in the first page', () => {
       cy.get('#pokemons-list').should('be.visible')
-      cy.get('#pokemons-list').children('a').each($el => {
-        cy.get($el)
+
+      pokemons.results.forEach(pokemon => {
+        cy.get('#pokemons-list').children('a')
+          .should('contain.text', pokemon.name)  
+      })
+
+      cy.get('#pokemons-list').children('a').each($pokemonLink => {
+        cy.get($pokemonLink)
           .should('be.visible')
-          .and('have.attr', 'href').and('eq', '/pokemon/' + $el.text())
+          .and('have.attr', 'href').and('eq', '/pokemon/' + $pokemonLink.text())
         
-        cy.get($el).children('button').should('exist')
+        cy.get($pokemonLink).children('button').should('have.class', 'list-group-item')
       })
     })
 
-    it('second page', () => {
+    it('renders the list with all pokemons provided in the second page', () => {
       cy.get('.page-item').contains('2').click()
 
       cy.get('#pokemons-list').should('be.visible')
-      cy.get('#pokemons-list').children('a').each($el => {
-        cy.get($el)
+
+      pokemons.results.forEach(pokemon => {
+        cy.get('#pokemons-list').children('a')
+          .should('contain.text', pokemon.name)  
+      })
+
+      cy.get('#pokemons-list').children('a').each($pokemonLink => {
+        cy.get($pokemonLink)
           .should('be.visible')
-          .and('have.attr', 'href').and('eq', '/pokemon/' + $el.text())
+          .and('have.attr', 'href').and('eq', '/pokemon/' + $pokemonLink.text())
         
-        cy.get($el).children('button').should('exist')
+        cy.get($pokemonLink).children('button').should('have.class', 'list-group-item')
       })
     })
   })

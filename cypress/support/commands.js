@@ -61,7 +61,7 @@ Cypress.Commands.add('stubTypesList', () => {
 Cypress.Commands.add('stubAnyType', () => {
 
   cy.server()
-  cy.fixture('normal.type.json').as('anyTypeFixture')
+  cy.fixture('dragon.type.json').as('anyTypeFixture')
   cy.route({
     url: /^https:\/\/pokeapi\.co\/api\/v2\/type\/\w+$/,
     headers: {

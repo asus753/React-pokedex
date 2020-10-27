@@ -3,7 +3,10 @@
 import ability from '../fixtures/stench.ability.json'
 
 describe('ability page', () => {
-  const ABILITY_ID = ability.id, ABILITY_NAME = ability.name, ABILITY_GENERATION = ability.generation.name
+  const ABILITY_ID = ability.id
+  const ABILITY_NAME = ability.name
+  const ABILITY_GENERATION = ability.generation.name
+  const ABILITY_DESCRIPTION = ability.effect_entries[1].effect
 
   before(() => {
     cy.stubAnyAbility()
@@ -38,17 +41,17 @@ describe('ability page', () => {
 
     it('renders the effect description', () => {
       cy.get('#ability-info').children('.card-body').children('.card-text').children('p')
-        .should('contain.text', ability.effect_entries[1].effect)
+        .should('contain.text', ABILITY_DESCRIPTION)
     })
   })
 
   it('renders the list of pokemons that possess the ability', () => {
     cy.get('h3').contains('Pokemons with this ability').should('be.visible')
 
-    cy.get('#pokemons').children('li').each($li => {
-      cy.get($li).children('a')
+    cy.get('#pokemons').children('li').each($pokemon => {
+      cy.get($pokemon).children('a')
         .should('be.visible')
-        .and('have.attr', 'href').and('eq', '/pokemon/' + $li.text())
+        .and('have.attr', 'href').and('eq', '/pokemon/' + $pokemon.text())
     })
   })
 })

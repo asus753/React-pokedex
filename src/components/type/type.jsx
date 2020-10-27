@@ -49,7 +49,7 @@ export const Type = () => {
 
       <Accordion className="mt-3">
         <Card>
-          <Accordion.Toggle as={Card.Header} eventKey='0' className="text-center">pokemons of this type</Accordion.Toggle>
+          <Accordion.Toggle as={Card.Header} eventKey='0' className="text-center" id='pokemons-head'>pokemons of this type</Accordion.Toggle>
           <Accordion.Collapse eventKey='0'>
             <Card.Body>
               <ul style={{columns : '2'}}>
@@ -61,7 +61,7 @@ export const Type = () => {
           </Accordion.Collapse>  
         </Card>
         <Card>
-          <Accordion.Toggle as={Card.Header} eventKey='1' className="text-center">moves of this type</Accordion.Toggle>
+          <Accordion.Toggle as={Card.Header} eventKey='1' className="text-center" id='moves-head'>moves of this type</Accordion.Toggle>
           <Accordion.Collapse eventKey='1'>
             <Card.Body>
               <ul style={{columns : '2'}}>

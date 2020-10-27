@@ -1,8 +1,10 @@
 /// <reference types="Cypress" />
 
+import type from '../fixtures/dragon.type.json'
+
 describe('Type page', () => {
-  const TYPE_ID = 1
-  const TYPE_NAME = 'normal'
+  const TYPE_ID = type.id
+  const TYPE_NAME = type.name
 
   before(() => {
     cy.stubAnyType()
@@ -12,28 +14,37 @@ describe('Type page', () => {
   it('renders the name and id of the pokemon as tittle', () => {
     cy.get('h1')
       .should('contain.text', TYPE_NAME)
-      .and('contain.text', TYPE_ID.toString())
+      .and('contain.text', TYPE_ID)
   })
 
-  it('renders the type info card', () => {
+  it('renders the type info card with the generation was introduced, the number of pokemons with the same, the number of movements for this type and the damage class inflicted by the movements', () => {
     cy.get('#type-info')
       .should('have.class', 'card').and('have.class', 'border-info').and('be.visible')
 
-    cy.get('#type-info').children('.card-body').children('.card-title').should('have.text', 'Type info')
-    cy.get('#type-info').children('.card-body').children('p').should('not.be.empty')
+    cy.get('#type-info').children('.card-body').children('p')
+      .should('contain.text', type.generation.name)
+      .and('contain.text', type.pokemon.length)
+      .and('contain.text', type.moves.length)
+      .and('contain.text', type.move_damage_class.name)
   })
 
   it('renders the damage relations card', () => {
     cy.get('#damage-relations')
       .should('have.class', 'card').and('have.class', 'border-info').and('be.visible')
 
-    cy.get('#damage-relations').children('.card-body').children('.card-title').should('have.text', 'Damage relations')
     cy.get('#damage-relations').children('.card-body').children('ul').children('li')
       .should('contain.text', 'Double damage from')
       .and('contain.text', 'Double damage to')
       .and('contain.text', 'Half damage to')
       .and('contain.text', 'No damage from')
       .and('contain.text', 'No damage to')
+
+    Object.keys(type.damage_relations).forEach(damageRelation => {
+      type.damage_relations[damageRelation].forEach(type => {
+        cy.get('#damage-relations').children('.card-body').children('ul').children('li')
+          .should('contain.text', type.name)
+      })
+    })
   })
 
   context('accordion', () => {
@@ -43,22 +54,46 @@ describe('Type page', () => {
         .should('have.length', 2)
     })
 
-    it('shows the list of pokemons of the type', () => {
-      cy.get('.accordion').contains('pokemons of this type').click()
+    context('shows the list of pokemons of the type', () => {
+      before(() => {
+        cy.get('#pokemons-head').click()
+      })
 
-      cy.get('.accordion').contains('pokemons of this type').parent('.card').children('.show').children('.card-body')
-        .children('ul').children('li').each($el => {
-          cy.get($el).children('a').should('have.attr', 'href').and('match', /^\/pokemon\/[a-zA-Z0-9_.-]*$/)
+      it('all pokemons are shown', () => {
+        type.pokemon.forEach(pokemon => {
+          cy.get('#pokemons-head').parent('.card').children('.show').children('.card-body')
+            .children('ul').children('li')
+              .should('contain.text', pokemon.pokemon.name)
         })
+      })
+
+      it('all pokemons haves a href that redirects to the pokemon page', () => {
+        cy.get('#pokemons-head').parent('.card').children('.show').children('.card-body')
+          .children('ul').children('li').each($pokemon => {
+            cy.get($pokemon).children('a').should('have.attr', 'href', '/pokemon/' + $pokemon.text())
+          })
+      })
     })
 
-    it('shows the list of moves of the type', () => {
-      cy.get('.accordion').contains('moves of this type').click()
+    context('shows the list of moves of the type', () => {
+      before(() => {
+        cy.get('#moves-head').click()
+      })
 
-      cy.get('.accordion').contains('moves of this type').parent('.card').children('.show').children('.card-body')
-        .children('ul').children('li').each($el => {
-          cy.get($el).children('a').should('have.attr', 'href').and('match', /^\/move\/[a-zA-Z0-9_.-]*$/)
+      it('all moves are shown', () => {
+        type.moves.forEach(move => {
+          cy.get('#moves-head').parent('.card').children('.show').children('.card-body')
+            .children('ul').children('li')
+              .should('contain.text', move.name)
         })
+      })
+
+      it('all moves haves a href that redirects to the move page', () => {
+        cy.get('#moves-head').parent('.card').children('.show').children('.card-body')
+          .children('ul').children('li').each($move => {
+            cy.get($move).children('a').should('have.attr', 'href', '/move/' + $move.text())
+          })
+      })
 
     })
   })
