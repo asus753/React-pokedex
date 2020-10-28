@@ -16,7 +16,7 @@ export const Paginator = ({page, changePage, totalElemnts, elementsPerPage = 20}
     return null
   }else{
     return (
-      <div className="justify-content-center mt-1 text-center">
+      <div className="justify-content-center mt-1 text-center" id="pagination">
         <Pagination className="justify-content-center">
           {pages.map((page,idx) => {
             if(page === 'LEFT') return (

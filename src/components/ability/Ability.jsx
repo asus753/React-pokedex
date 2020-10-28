@@ -21,7 +21,7 @@ export const Ability = () => {
       <div className="text-center">
         <h1>{ability.name} ({ability.id})</h1>
         <p>{ability.description.text}<br/><small>(version : {ability.description.version})</small></p>
-        <Card border="info" className="m-3">
+        <Card border="info" className="m-3" id='ability-info'>
           <Card.Body>
             <Card.Title>Ability info</Card.Title>
             <Card.Text as='label'>
@@ -30,12 +30,14 @@ export const Ability = () => {
             </Card.Text>
           </Card.Body>
         </Card>
-        <h3>Pokemons with this ability</h3>
-        <ul className="list-group list-group-flush mt-3 w-100">
-          {ability.pokemons.map((pokemon, idx) => <li className='list-group-item' key={idx}>
-            <Link to={`/pokemon/${pokemon}`}><strong>{pokemon}</strong></Link>
-          </li>)}
-        </ul>
+        <div id='pokemons'>
+          <h3>Pokemons with this ability</h3>
+          <ul className="list-group list-group-flush mt-3 w-100">
+            {ability.pokemons.map((pokemon, idx) => <li className='list-group-item' key={idx}>
+              <Link to={`/pokemon/${pokemon}`}><strong>{pokemon}</strong></Link>
+            </li>)}
+          </ul>
+        </div>
       </div>
     )
   }

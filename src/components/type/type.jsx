@@ -19,7 +19,7 @@ export const Type = () => {
       
       <Row>
         <Col className="mt-3" md>
-          <Card border='info' className="text-center">
+          <Card border='info' className="text-center h-100" id='type-info'>
             <Card.Body>
               <Card.Title>Type info</Card.Title>
               <p>
@@ -31,7 +31,7 @@ export const Type = () => {
           </Card>
         </Col>
         <Col className="mt-3" md>
-          <Card border='info'>
+          <Card border='info' id='damage-relations' className='h-100'>
             <Card.Body>
               <Card.Title className="text-center">Damage relations</Card.Title>
               <ul>
@@ -48,7 +48,7 @@ export const Type = () => {
       </Row>
 
       <Accordion className="mt-3">
-        <Card>
+        <Card id='pokemons'>
           <Accordion.Toggle as={Card.Header} eventKey='0' className="text-center">pokemons of this type</Accordion.Toggle>
           <Accordion.Collapse eventKey='0'>
             <Card.Body>
@@ -60,7 +60,7 @@ export const Type = () => {
             </Card.Body>
           </Accordion.Collapse>  
         </Card>
-        <Card>
+        <Card id='moves'>
           <Accordion.Toggle as={Card.Header} eventKey='1' className="text-center">moves of this type</Accordion.Toggle>
           <Accordion.Collapse eventKey='1'>
             <Card.Body>
