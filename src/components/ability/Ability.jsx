@@ -30,12 +30,14 @@ export const Ability = () => {
             </Card.Text>
           </Card.Body>
         </Card>
-        <h3>Pokemons with this ability</h3>
-        <ul className="list-group list-group-flush mt-3 w-100" id='pokemons'>
-          {ability.pokemons.map((pokemon, idx) => <li className='list-group-item' key={idx}>
-            <Link to={`/pokemon/${pokemon}`}><strong>{pokemon}</strong></Link>
-          </li>)}
-        </ul>
+        <div id='pokemons'>
+          <h3>Pokemons with this ability</h3>
+          <ul className="list-group list-group-flush mt-3 w-100">
+            {ability.pokemons.map((pokemon, idx) => <li className='list-group-item' key={idx}>
+              <Link to={`/pokemon/${pokemon}`}><strong>{pokemon}</strong></Link>
+            </li>)}
+          </ul>
+        </div>
       </div>
     )
   }

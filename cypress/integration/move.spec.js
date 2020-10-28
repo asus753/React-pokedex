@@ -21,7 +21,7 @@ describe('Move page', () => {
     cy.visit(Cypress.config('baseUrl') + '/move/' + MOVE_ID)
   })
 
-  it('renders the name and id of the pokemon as tittle', () => {
+  it('renders the name and id of the move as tittle', () => {
     cy.get('h1')
       .should('contain.text', MOVE_NAME)
       .and('contain.text', MOVE_ID)
@@ -38,7 +38,7 @@ describe('Move page', () => {
     cy.get('#stats').children('.card-body').children('.card-title')
       .should('have.text', 'Move stats')
     
-    cy.get('#stats').children('.card-body').children('ul').children('li')
+    cy.get('#stats').children('.card-body')
       .should('contain.text', MOVE_STATS.damageClass)
       .and('contain.text', MOVE_STATS.type)
       .and('contain.text', MOVE_STATS.accuracy)

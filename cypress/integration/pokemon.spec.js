@@ -79,14 +79,14 @@ describe('Pokemon page', () => {
       
       it('all movements are shown', () => {
         pokemon.moves.forEach(move => {
-          cy.get('.accordion').children('#moves').children('.show').children('.card-body').children('ul').children('li')
+          cy.get('#moves').children('.show')
             .should('contain.text', move.move.name)
         })
       })
 
       it('all movements have a href that redirects to the movement page', () => {
-        cy.get('.accordion').children('#moves').children('.show').children('.card-body').children('ul').children('li').each($move => {
-          cy.get($move.children('a')).should('have.attr', 'href').and('eq', '/move/' + $move.text())
+        cy.get('#moves').children('.show').children('.card-body').children('ul').children('li').each($move => {
+          cy.get($move.children('a')).should('have.attr', 'href', '/move/' + $move.text())
           cy.get($move).should('be.visible')
         })
       })
@@ -97,18 +97,19 @@ describe('Pokemon page', () => {
         cy.get('.accordion').children('#types').children('.card-header').click()
       })
 
-      it('all types have a href that redirects to the type page', () => {
-        cy.get('.accordion').children('#types').children('.show').children('.card-body').children('strong').each($type => {
-          cy.get($type).children('a').should('have.attr', 'href').and('eq', '/type/' + $type.text())
-        })
-      })
-
       it('all types are shown', () => {
         pokemon.types.forEach(type => {
-          cy.get('.accordion').children('#types').children('.show').children('.card-body').children('strong')
+          cy.get('#types').children('.show')
             .should('contain.text', type.type.name)
         })
       })
+
+      it('all types have a href that redirects to the type page', () => {
+        cy.get('.accordion').children('#types').children('.show').children('.card-body').children('strong').each($type => {
+          cy.get($type).children('a').should('have.attr', 'href', '/type/' + $type.text())
+        })
+      })
+
     })
 
     context('shows the list of abilities', () => {
@@ -116,18 +117,19 @@ describe('Pokemon page', () => {
         cy.get('.accordion').children('#abilities').children('.card-header').click()
       })
 
-      it('all abilities have a href that redirects to the ability page', () => {
-        cy.get('.accordion').children('#abilities').children('.show').children('.card-body').children('strong').each($ability => {
-          cy.get($ability).children('a').should('have.attr', 'href').and('eq', '/ability/' + $ability.text())
-        })
-      })
-
       it('all abilities are shown', () => {
         pokemon.abilities.forEach(ability => {
-          cy.get('.accordion').children('#abilities').children('.show').children('.card-body').children('strong')
+          cy.get('#abilities').children('.show')
             .should('contain.text', ability.ability.name)
         })
       })
+
+      it('all abilities have a href that redirects to the ability page', () => {
+        cy.get('.accordion').children('#abilities').children('.show').children('.card-body').children('strong').each($ability => {
+          cy.get($ability).children('a').should('have.attr', 'href', '/ability/' + $ability.text())
+        })
+      })
+
     })
 
     context('shows the table of pokemon stats', () => {

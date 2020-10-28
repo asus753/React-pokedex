@@ -32,7 +32,7 @@ describe('homepage', () => {
       cy.get('#main-buttons').contains('Generations').should('be.visible')
       cy.get('#main-buttons').contains('Generations').parent('a')
         .should('have.attr', 'href').and('eq', '/generation')
-      
+
     })
   })
   

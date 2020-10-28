@@ -5,23 +5,24 @@ import generation from '../fixtures/generation-vi.generation.json'
 describe('generation page', () => {
   const GENERATION_ID = generation.id
   const GENERATION_NAME = generation.name
+  const GENERATION_MAIN_REGION = generation.main_region.name
   
   before(() => {
     cy.stubAnyGeneration()
     cy.visit(Cypress.config('baseUrl') + '/generation/' + GENERATION_ID)
   })
 
-  it('renders the name and id of the pokemon as tittle', () => {
+  it('renders the name and id of the generation as tittle', () => {
     cy.get('h1')
       .should('contain.text', GENERATION_NAME)
       .and('contain.text', GENERATION_ID)
   })
 
   it('renders a card with the main region', () => {
-    cy.get('#main-region').should('contain.text', generation.main_region.name)
+    cy.get('#main-region').should('contain.text', GENERATION_MAIN_REGION)
   })
 
-  it('all pokemons speceies added are shown', () => {
+  it('all pokemons species added are shown', () => {
     cy.get('#species').children('.card-header').click()
     
     generation.pokemon_species.forEach(specie => {

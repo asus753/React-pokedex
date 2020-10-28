@@ -11,7 +11,7 @@ describe('Type page', () => {
     cy.visit(Cypress.config('baseUrl') + '/type/' + TYPE_NAME)
   })
 
-  it('renders the name and id of the pokemon as tittle', () => {
+  it('renders the name and id of the type as tittle', () => {
     cy.get('h1')
       .should('contain.text', TYPE_NAME)
       .and('contain.text', TYPE_ID)
@@ -56,19 +56,18 @@ describe('Type page', () => {
 
     context('shows the list of pokemons of the type', () => {
       before(() => {
-        cy.get('#pokemons-head').click()
+        cy.get('#pokemons').children('.card-header').click()
       })
 
       it('all pokemons are shown', () => {
         type.pokemon.forEach(pokemon => {
-          cy.get('#pokemons-head').parent('.card').children('.show').children('.card-body')
-            .children('ul').children('li')
-              .should('contain.text', pokemon.pokemon.name)
+          cy.get('#pokemons').children('.show')
+            .should('contain.text', pokemon.pokemon.name)
         })
       })
 
       it('all pokemons haves a href that redirects to the pokemon page', () => {
-        cy.get('#pokemons-head').parent('.card').children('.show').children('.card-body')
+        cy.get('#pokemons').children('.show').children('.card-body')
           .children('ul').children('li').each($pokemon => {
             cy.get($pokemon).children('a').should('have.attr', 'href', '/pokemon/' + $pokemon.text())
           })
@@ -77,19 +76,18 @@ describe('Type page', () => {
 
     context('shows the list of moves of the type', () => {
       before(() => {
-        cy.get('#moves-head').click()
+        cy.get('#moves').children('.card-header').click()
       })
 
       it('all moves are shown', () => {
         type.moves.forEach(move => {
-          cy.get('#moves-head').parent('.card').children('.show').children('.card-body')
-            .children('ul').children('li')
-              .should('contain.text', move.name)
+          cy.get('#moves').children('.show')
+            .should('contain.text', move.name)
         })
       })
 
       it('all moves haves a href that redirects to the move page', () => {
-        cy.get('#moves-head').parent('.card').children('.show').children('.card-body')
+        cy.get('#moves').children('.show').children('.card-body')
           .children('ul').children('li').each($move => {
             cy.get($move).children('a').should('have.attr', 'href', '/move/' + $move.text())
           })

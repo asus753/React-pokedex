@@ -4,6 +4,7 @@ import pokemons from '../fixtures/pokemons-list.json'
 
 describe('pokemons list page', () => {
   const TOTAL_POKEMONS = pokemons.count
+  const NUMBER_OF_PAGINATION_ITEMS_IN_FIRST_PAGE = 9
 
   before(() => {
     cy.stubPokemonsList()
@@ -22,7 +23,7 @@ describe('pokemons list page', () => {
 
     it('the pagination component is rendered correctly', () => {
       cy.get('#pagination').should('be.visible')
-      cy.get('#pagination').children('.pagination').children('li').should('have.length.at.least', 9)
+      cy.get('#pagination').children('.pagination').children('li').should('have.length.at.least', NUMBER_OF_PAGINATION_ITEMS_IN_FIRST_PAGE)
     })
 
     it('the first page is marked as active by default', () => {
@@ -42,7 +43,7 @@ describe('pokemons list page', () => {
     })
   })
 
-  describe('renders the list of pokemons', () => {
+  context('renders the list of pokemons', () => {
 
     before(() => {
       cy.get('.page-item').contains('1').click()
@@ -56,14 +57,14 @@ describe('pokemons list page', () => {
       cy.get('#pokemons-list').should('be.visible')
 
       pokemons.results.forEach(pokemon => {
-        cy.get('#pokemons-list').children('a')
+        cy.get('#pokemons-list')
           .should('contain.text', pokemon.name)  
       })
 
       cy.get('#pokemons-list').children('a').each($pokemonLink => {
         cy.get($pokemonLink)
           .should('be.visible')
-          .and('have.attr', 'href').and('eq', '/pokemon/' + $pokemonLink.text())
+          .and('have.attr', 'href', '/pokemon/' + $pokemonLink.text())
         
         cy.get($pokemonLink).children('button').should('have.class', 'list-group-item')
       })
@@ -82,7 +83,7 @@ describe('pokemons list page', () => {
       cy.get('#pokemons-list').children('a').each($pokemonLink => {
         cy.get($pokemonLink)
           .should('be.visible')
-          .and('have.attr', 'href').and('eq', '/pokemon/' + $pokemonLink.text())
+          .and('have.attr', 'href', '/pokemon/' + $pokemonLink.text())
         
         cy.get($pokemonLink).children('button').should('have.class', 'list-group-item')
       })

@@ -34,7 +34,7 @@ describe('ability page', () => {
         .should('have.text', 'Ability info')
     })
 
-    it('renders the generation when the move was introduced', () => {
+    it('renders the generation when the ability was introduced', () => {
       cy.get('#ability-info').children('.card-body').children('.card-text').children('p')
         .should('contain.text', ABILITY_GENERATION)
     })
@@ -46,12 +46,12 @@ describe('ability page', () => {
   })
 
   it('renders the list of pokemons that possess the ability', () => {
-    cy.get('h3').contains('Pokemons with this ability').should('be.visible')
+    cy.get('#pokemons').children('h3').should('be.visible')
 
-    cy.get('#pokemons').children('li').each($pokemon => {
+    cy.get('#pokemons').children('ul').children('li').each($pokemon => {
       cy.get($pokemon).children('a')
         .should('be.visible')
-        .and('have.attr', 'href').and('eq', '/pokemon/' + $pokemon.text())
+        .and('have.attr', 'href', '/pokemon/' + $pokemon.text())
     })
   })
 })

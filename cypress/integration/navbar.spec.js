@@ -6,15 +6,15 @@ function testCompleteNavBar () {
   cy.get('nav').children('.navbar-brand')
     .should('have.text', 'Pokedex')
     .and('be.visible')
-    .and('have.attr', 'href').and('eq', '/')
+    .and('have.attr', 'href', '/')
 
   cy.get('nav').children('#navbar').contains('pokemons')
     .should('be.visible')
-    .and('have.attr', 'href').and('eq', '/pokemon')
+    .and('have.attr', 'href', '/pokemon')
 
   cy.get('nav').children('#navbar').contains('generations')
     .should('be.visible')
-    .and('have.attr', 'href').and('eq', '/generation')
+    .and('have.attr', 'href', '/generation')
 
   
   cy.get('nav').children('#navbar').children('form').should('be.visible')
@@ -23,6 +23,33 @@ function testCompleteNavBar () {
 }
 
 describe('the navbar is visible and works in all routes of the app', () => {
+
+  context('the navbar links redirects correctly', () => {
+    before(() => {
+      cy.visit(Cypress.config('baseUrl'))
+    })
+
+    it('the pokedex link redirects to the homepage', () => {
+      cy.get('nav').children('.navbar-brand').click()
+
+      cy.url().should('eq', Cypress.config('baseUrl') + '/')
+    })
+
+    it('the link pokemons redirects to the pokemons list page', () => {
+      cy.stubPokemonsList()
+      cy.get('nav').children('#navbar').contains('pokemons').click()
+
+      cy.url().should('eq', Cypress.config('baseUrl') + '/pokemon')
+    })
+
+    it('the generation links redirects to the generation list page', () => {
+      cy.stubGenerationsList()
+      cy.get('nav').children('#navbar').contains('generations').click()
+
+      cy.url().should('eq', Cypress.config('baseUrl') + '/generation')
+    })
+  })
+
   context('the navbar works in the homepage', () => {
     before(() => {
       cy.visit(Cypress.config('baseUrl'))
@@ -180,7 +207,7 @@ describe('the searchBar works correctly', () => {
       cy.get('#navbar').children('form').children('button[type=submit]').click()
     })
 
-    it('stay on the home page', () => {
+    it('remains on the home page', () => {
       cy.url().should('eq', Cypress.config('baseUrl') + '/')
     })
 
